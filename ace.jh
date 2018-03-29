@@ -1,0 +1,133 @@
+entity Launch {
+	launchApp String
+    launchKey String
+    enabled Boolean
+}
+
+entity BundleGroup {
+	bundleGroupName String
+    bundleGroupKey String
+}
+
+entity Bundle {
+	bundleName String
+    bundleKey String
+    awdSourceType String maxlength(25)
+}
+
+entity BundleToDocument {
+	collateSequence Integer
+    optional Boolean
+}
+
+entity DocumentGeneric {
+	genericKey String
+    matchIssueOrResidentState String
+}
+
+entity DocumentSpecific {
+	documentKey String
+    fileName String
+    filePath String
+}
+
+entity TemplateParameters {
+	parameterName String
+    valueFormula String
+    required Boolean
+    uiFragmentKey String
+}
+
+entity DocumentState {
+	state String required maxlength(2)
+}
+
+entity DocumentType {
+	documentTypeName String
+}
+
+relationship ManyToOne {
+	Launch{bundleGroup(bundleGroupName)} to BundleGroup
+	DocumentGeneric{documentType(genericKey)} to DocumentType
+    TemplateParameters{document(documentKey)} to DocumentSpecific
+    BundleToDocument{bundle(bundleName)} to Bundle
+    BundleToDocument{document(genericKey)} to DocumentGeneric
+    DocumentSpecific{document(genericKey)} to DocumentGeneric
+}
+
+
+
+relationship ManyToMany {
+	BundleGroup{bundle(bundleName)} to Bundle{bundleGroup(bundleGroupName)}
+    DocumentGeneric{aceCompany(description)} to AceCompany{document(genericKey)}
+    DocumentSpecific{documentState(state)} to DocumentState{document(documentKey)}
+}
+
+
+entity AceCompany {
+	description String
+	regionCode String  maxlength(4)
+    companyCode String  maxlength(6)
+    canadian Boolean
+    letterhead String
+    reinstatementCanadian Boolean
+    url String
+    variableProducts Boolean
+    adminSystem String
+    webSite String
+    statCoCode String
+    webWord String
+    optParam String
+    logo String
+}
+
+entity AceCompanyTag {
+	companyTag String
+    companyTagValue String
+}
+
+relationship ManyToOne {
+	AceCompanyTag{aceCompany(description)} to AceCompany
+	
+}
+
+entity Printer {
+	printerName String
+    printerDescription String
+    managed Boolean
+}
+
+relationship ManyToOne {
+
+	AceCompany{printer(printerName)} to Printer
+}
+
+entity WebServiceRequestAudit {
+	requestWhen Instant
+    operation String
+    durationMs Integer
+    exception String
+    wsRequest String
+    wsResponse String
+    callingApp String
+    fromServer String
+    extraField String
+}
+
+entity PrintManagement {
+	printerName String
+    whenDocumentCreated Instant
+    fromServer String
+    documentFileName String
+    documentFullPath String
+    documentStatus String
+    tryCount Integer
+    whenProcessed Instant
+    processingDuration Integer
+    processingInfo String
+    extraField String
+}
+
+relationship OneToOne {
+	PrintManagement{fromRequest} to WebServiceRequestAudit{printManagement}
+}
