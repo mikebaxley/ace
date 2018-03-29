@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span>Template Parameters</span>
+        <button class="btn btn-primary float-right jh-create-entity create-template-parameters" [routerLink]="['/', { outlets: { popup: ['template-parameters-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Template Parameters
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="templateParameters">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Parameter Name</span></th>
+            <th><span>Value Formula</span></th>
+            <th><span>Required</span></th>
+            <th><span>Ui Fragment Key</span></th>
+            <th><span>Document</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let templateParameters of templateParameters ;trackBy: trackId">
+                <td><a [routerLink]="['../template-parameters', templateParameters.id ]">{{templateParameters.id}}</a></td>
+                <td>{{templateParameters.parameterName}}</td>
+                <td>{{templateParameters.valueFormula}}</td>
+                <td>{{templateParameters.required}}</td>
+                <td>{{templateParameters.uiFragmentKey}}</td>
+                <td>
+                    <div *ngIf="templateParameters.document">
+                        <a [routerLink]="['../document-specific', templateParameters.document?.id ]" >{{templateParameters.document?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../template-parameters', templateParameters.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'template-parameters/'+ templateParameters.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'template-parameters/'+ templateParameters.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
