@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "bundleGroup",
+            "otherEntityName": "bundleGroup",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "bundle"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "bundleName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bundleKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "awdSourceType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 25
+        }
+    ],
+    "changelogDate": "20180329161922",
+    "entityTableName": "bundle",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

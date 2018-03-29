@@ -1,0 +1,72 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myWebServiceRequestAuditLabel">Create or edit a Web Service Request Audit</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!webServiceRequestAudit.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="webServiceRequestAudit.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_requestWhen">Request When</label>
+            <div class="d-flex">
+                <input id="field_requestWhen" type="datetime-local" class="form-control" name="requestWhen" [(ngModel)]="webServiceRequestAudit.requestWhen"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_operation">Operation</label>
+            <input type="text" class="form-control" name="operation" id="field_operation"
+                [(ngModel)]="webServiceRequestAudit.operation" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_durationMs">Duration Ms</label>
+            <input type="number" class="form-control" name="durationMs" id="field_durationMs"
+                [(ngModel)]="webServiceRequestAudit.durationMs" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_exception">Exception</label>
+            <input type="text" class="form-control" name="exception" id="field_exception"
+                [(ngModel)]="webServiceRequestAudit.exception" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_wsRequest">Ws Request</label>
+            <input type="text" class="form-control" name="wsRequest" id="field_wsRequest"
+                [(ngModel)]="webServiceRequestAudit.wsRequest" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_wsResponse">Ws Response</label>
+            <input type="text" class="form-control" name="wsResponse" id="field_wsResponse"
+                [(ngModel)]="webServiceRequestAudit.wsResponse" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_callingApp">Calling App</label>
+            <input type="text" class="form-control" name="callingApp" id="field_callingApp"
+                [(ngModel)]="webServiceRequestAudit.callingApp" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_fromServer">From Server</label>
+            <input type="text" class="form-control" name="fromServer" id="field_fromServer"
+                [(ngModel)]="webServiceRequestAudit.fromServer" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_extraField">Extra Field</label>
+            <input type="text" class="form-control" name="extraField" id="field_extraField"
+                [(ngModel)]="webServiceRequestAudit.extraField" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

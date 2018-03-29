@@ -1,0 +1,114 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myAceCompanyLabel">Create or edit a Ace Company</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!aceCompany.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="aceCompany.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="aceCompany.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_regionCode">Region Code</label>
+            <input type="text" class="form-control" name="regionCode" id="field_regionCode"
+                [(ngModel)]="aceCompany.regionCode" maxlength="4"/>
+            <div [hidden]="!(editForm.controls.regionCode?.dirty && editForm.controls.regionCode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.regionCode?.errors?.maxlength">
+                   This field cannot be longer than 4 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_companyCode">Company Code</label>
+            <input type="text" class="form-control" name="companyCode" id="field_companyCode"
+                [(ngModel)]="aceCompany.companyCode" maxlength="6"/>
+            <div [hidden]="!(editForm.controls.companyCode?.dirty && editForm.controls.companyCode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.companyCode?.errors?.maxlength">
+                   This field cannot be longer than 6 characters.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_canadian">Canadian</label>
+            <input type="checkbox" class="form-control" name="canadian" id="field_canadian"
+                [(ngModel)]="aceCompany.canadian" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_letterhead">Letterhead</label>
+            <input type="text" class="form-control" name="letterhead" id="field_letterhead"
+                [(ngModel)]="aceCompany.letterhead" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_reinstatementCanadian">Reinstatement Canadian</label>
+            <input type="checkbox" class="form-control" name="reinstatementCanadian" id="field_reinstatementCanadian"
+                [(ngModel)]="aceCompany.reinstatementCanadian" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                [(ngModel)]="aceCompany.url" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_variableProducts">Variable Products</label>
+            <input type="checkbox" class="form-control" name="variableProducts" id="field_variableProducts"
+                [(ngModel)]="aceCompany.variableProducts" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_adminSystem">Admin System</label>
+            <input type="text" class="form-control" name="adminSystem" id="field_adminSystem"
+                [(ngModel)]="aceCompany.adminSystem" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_webSite">Web Site</label>
+            <input type="text" class="form-control" name="webSite" id="field_webSite"
+                [(ngModel)]="aceCompany.webSite" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_statCoCode">Stat Co Code</label>
+            <input type="text" class="form-control" name="statCoCode" id="field_statCoCode"
+                [(ngModel)]="aceCompany.statCoCode" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_webWord">Web Word</label>
+            <input type="text" class="form-control" name="webWord" id="field_webWord"
+                [(ngModel)]="aceCompany.webWord" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_optParam">Opt Param</label>
+            <input type="text" class="form-control" name="optParam" id="field_optParam"
+                [(ngModel)]="aceCompany.optParam" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_logo">Logo</label>
+            <input type="text" class="form-control" name="logo" id="field_logo"
+                [(ngModel)]="aceCompany.logo" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_printer">Printer</label>
+            <select class="form-control" id="field_printer" name="printer" [(ngModel)]="aceCompany.printer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="printerOption.id === aceCompany.printer?.id ? aceCompany.printer : printerOption" *ngFor="let printerOption of printers; trackBy: trackPrinterById">{{printerOption.printerName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

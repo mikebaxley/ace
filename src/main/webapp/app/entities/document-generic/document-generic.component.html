@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span>Document Generics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-document-generic" [routerLink]="['/', { outlets: { popup: ['document-generic-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Document Generic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="documentGenerics">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Generic Key</span></th>
+            <th><span>Match Issue Or Resident State</span></th>
+            <th><span>Document Type</span></th>
+            <th><span>Ace Company</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let documentGeneric of documentGenerics ;trackBy: trackId">
+                <td><a [routerLink]="['../document-generic', documentGeneric.id ]">{{documentGeneric.id}}</a></td>
+                <td>{{documentGeneric.genericKey}}</td>
+                <td>{{documentGeneric.matchIssueOrResidentState}}</td>
+                <td>
+                    <div *ngIf="documentGeneric.documentType">
+                        <a [routerLink]="['../document-type', documentGeneric.documentType?.id ]" >{{documentGeneric.documentType?.genericKey}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let aceCompany of documentGeneric.aceCompanies; let last = last">
+                            <a class="form-control-static" [routerLink]="['../ace-company', aceCompany?.id ]">{{aceCompany.description}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../document-generic', documentGeneric.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'document-generic/'+ documentGeneric.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'document-generic/'+ documentGeneric.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

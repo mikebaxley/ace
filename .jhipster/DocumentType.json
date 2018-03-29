@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "documentTypeName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180329161928",
+    "entityTableName": "document_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

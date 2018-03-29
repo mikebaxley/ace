@@ -1,0 +1,42 @@
+
+<div *ngIf="bundleToDocument">
+    <h2><span>Bundle To Document</span> {{bundleToDocument.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Collate Sequence</span></dt>
+        <dd>
+            <span>{{bundleToDocument.collateSequence}}</span>
+        </dd>
+        <dt><span>Optional</span></dt>
+        <dd>
+            <span>{{bundleToDocument.optional}}</span>
+        </dd>
+        <dt><span>Bundle</span></dt>
+        <dd>
+            <div *ngIf="bundleToDocument.bundle">
+                <a [routerLink]="['/bundle', bundleToDocument.bundle?.id]">{{bundleToDocument.bundle?.bundleName}}</a>
+            </div>
+        </dd>
+        <dt><span>Document</span></dt>
+        <dd>
+            <div *ngIf="bundleToDocument.document">
+                <a [routerLink]="['/document-generic', bundleToDocument.document?.id]">{{bundleToDocument.document?.genericKey}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'bundle-to-document/'+ bundleToDocument.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

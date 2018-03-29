@@ -1,0 +1,44 @@
+
+<div *ngIf="templateParameters">
+    <h2><span>Template Parameters</span> {{templateParameters.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Parameter Name</span></dt>
+        <dd>
+            <span>{{templateParameters.parameterName}}</span>
+        </dd>
+        <dt><span>Value Formula</span></dt>
+        <dd>
+            <span>{{templateParameters.valueFormula}}</span>
+        </dd>
+        <dt><span>Required</span></dt>
+        <dd>
+            <span>{{templateParameters.required}}</span>
+        </dd>
+        <dt><span>Ui Fragment Key</span></dt>
+        <dd>
+            <span>{{templateParameters.uiFragmentKey}}</span>
+        </dd>
+        <dt><span>Document</span></dt>
+        <dd>
+            <div *ngIf="templateParameters.document">
+                <a [routerLink]="['/document-specific', templateParameters.document?.id]">{{templateParameters.document?.documentKey}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'template-parameters/'+ templateParameters.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

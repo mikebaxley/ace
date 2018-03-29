@@ -1,0 +1,40 @@
+
+<div *ngIf="launch">
+    <h2><span>Launch</span> {{launch.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Launch App</span></dt>
+        <dd>
+            <span>{{launch.launchApp}}</span>
+        </dd>
+        <dt><span>Launch Key</span></dt>
+        <dd>
+            <span>{{launch.launchKey}}</span>
+        </dd>
+        <dt><span>Enabled</span></dt>
+        <dd>
+            <span>{{launch.enabled}}</span>
+        </dd>
+        <dt><span>Bundle Group</span></dt>
+        <dd>
+            <div *ngIf="launch.bundleGroup">
+                <a [routerLink]="['/bundle-group', launch.bundleGroup?.id]">{{launch.bundleGroup?.bundleGroupName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'launch/'+ launch.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

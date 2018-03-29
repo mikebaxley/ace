@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "documentType",
+            "otherEntityName": "documentType",
+            "otherEntityField": "genericKey"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "aceCompany",
+            "otherEntityName": "aceCompany",
+            "otherEntityField": "description",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "genericKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "matchIssueOrResidentState",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180329161924",
+    "entityTableName": "document_generic",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

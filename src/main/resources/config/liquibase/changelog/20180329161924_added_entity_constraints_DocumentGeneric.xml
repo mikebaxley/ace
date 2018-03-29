@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity DocumentGeneric.
+    -->
+    <changeSet id="20180329161924-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="document_type_id"
+                                 baseTableName="document_generic"
+                                 constraintName="fk_document_generic_document_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="document_generics_id"
+                                 baseTableName="document_generic_ace_company"
+                                 constraintName="fk_document_generic_ace_company_document_generics_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="document_generic"/>
+        <addForeignKeyConstraint baseColumnNames="ace_companies_id"
+                                 baseTableName="document_generic_ace_company"
+                                 constraintName="fk_document_generic_ace_company_ace_companies_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ace_company"/>
+        
+    </changeSet>
+</databaseChangeLog>

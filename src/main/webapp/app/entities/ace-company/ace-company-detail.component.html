@@ -1,0 +1,84 @@
+
+<div *ngIf="aceCompany">
+    <h2><span>Ace Company</span> {{aceCompany.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{aceCompany.description}}</span>
+        </dd>
+        <dt><span>Region Code</span></dt>
+        <dd>
+            <span>{{aceCompany.regionCode}}</span>
+        </dd>
+        <dt><span>Company Code</span></dt>
+        <dd>
+            <span>{{aceCompany.companyCode}}</span>
+        </dd>
+        <dt><span>Canadian</span></dt>
+        <dd>
+            <span>{{aceCompany.canadian}}</span>
+        </dd>
+        <dt><span>Letterhead</span></dt>
+        <dd>
+            <span>{{aceCompany.letterhead}}</span>
+        </dd>
+        <dt><span>Reinstatement Canadian</span></dt>
+        <dd>
+            <span>{{aceCompany.reinstatementCanadian}}</span>
+        </dd>
+        <dt><span>Url</span></dt>
+        <dd>
+            <span>{{aceCompany.url}}</span>
+        </dd>
+        <dt><span>Variable Products</span></dt>
+        <dd>
+            <span>{{aceCompany.variableProducts}}</span>
+        </dd>
+        <dt><span>Admin System</span></dt>
+        <dd>
+            <span>{{aceCompany.adminSystem}}</span>
+        </dd>
+        <dt><span>Web Site</span></dt>
+        <dd>
+            <span>{{aceCompany.webSite}}</span>
+        </dd>
+        <dt><span>Stat Co Code</span></dt>
+        <dd>
+            <span>{{aceCompany.statCoCode}}</span>
+        </dd>
+        <dt><span>Web Word</span></dt>
+        <dd>
+            <span>{{aceCompany.webWord}}</span>
+        </dd>
+        <dt><span>Opt Param</span></dt>
+        <dd>
+            <span>{{aceCompany.optParam}}</span>
+        </dd>
+        <dt><span>Logo</span></dt>
+        <dd>
+            <span>{{aceCompany.logo}}</span>
+        </dd>
+        <dt><span>Printer</span></dt>
+        <dd>
+            <div *ngIf="aceCompany.printer">
+                <a [routerLink]="['/printer', aceCompany.printer?.id]">{{aceCompany.printer?.printerName}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ace-company/'+ aceCompany.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,36 @@
+
+<div *ngIf="aceCompanyTag">
+    <h2><span>Ace Company Tag</span> {{aceCompanyTag.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Company Tag</span></dt>
+        <dd>
+            <span>{{aceCompanyTag.companyTag}}</span>
+        </dd>
+        <dt><span>Company Tag Value</span></dt>
+        <dd>
+            <span>{{aceCompanyTag.companyTagValue}}</span>
+        </dd>
+        <dt><span>Ace Company</span></dt>
+        <dd>
+            <div *ngIf="aceCompanyTag.aceCompany">
+                <a [routerLink]="['/ace-company', aceCompanyTag.aceCompany?.id]">{{aceCompanyTag.aceCompany?.description}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'ace-company-tag/'+ aceCompanyTag.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

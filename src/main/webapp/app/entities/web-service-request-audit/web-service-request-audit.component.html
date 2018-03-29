@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span>Web Service Request Audits</span>
+        <button class="btn btn-primary float-right jh-create-entity create-web-service-request-audit" [routerLink]="['/', { outlets: { popup: ['web-service-request-audit-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Web Service Request Audit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="webServiceRequestAudits">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Request When</span></th>
+            <th><span>Operation</span></th>
+            <th><span>Duration Ms</span></th>
+            <th><span>Exception</span></th>
+            <th><span>Ws Request</span></th>
+            <th><span>Ws Response</span></th>
+            <th><span>Calling App</span></th>
+            <th><span>From Server</span></th>
+            <th><span>Extra Field</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let webServiceRequestAudit of webServiceRequestAudits ;trackBy: trackId">
+                <td><a [routerLink]="['../web-service-request-audit', webServiceRequestAudit.id ]">{{webServiceRequestAudit.id}}</a></td>
+                <td>{{webServiceRequestAudit.requestWhen | date:'medium'}}</td>
+                <td>{{webServiceRequestAudit.operation}}</td>
+                <td>{{webServiceRequestAudit.durationMs}}</td>
+                <td>{{webServiceRequestAudit.exception}}</td>
+                <td>{{webServiceRequestAudit.wsRequest}}</td>
+                <td>{{webServiceRequestAudit.wsResponse}}</td>
+                <td>{{webServiceRequestAudit.callingApp}}</td>
+                <td>{{webServiceRequestAudit.fromServer}}</td>
+                <td>{{webServiceRequestAudit.extraField}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../web-service-request-audit', webServiceRequestAudit.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'web-service-request-audit/'+ webServiceRequestAudit.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'web-service-request-audit/'+ webServiceRequestAudit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

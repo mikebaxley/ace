@@ -1,0 +1,66 @@
+<div>
+    <h2>
+        <span>Ace Company Tags</span>
+        <button class="btn btn-primary float-right jh-create-entity create-ace-company-tag" [routerLink]="['/', { outlets: { popup: ['ace-company-tag-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Ace Company Tag
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="aceCompanyTags">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Company Tag</span></th>
+            <th><span>Company Tag Value</span></th>
+            <th><span>Ace Company</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let aceCompanyTag of aceCompanyTags ;trackBy: trackId">
+                <td><a [routerLink]="['../ace-company-tag', aceCompanyTag.id ]">{{aceCompanyTag.id}}</a></td>
+                <td>{{aceCompanyTag.companyTag}}</td>
+                <td>{{aceCompanyTag.companyTagValue}}</td>
+                <td>
+                    <div *ngIf="aceCompanyTag.aceCompany">
+                        <a [routerLink]="['../ace-company', aceCompanyTag.aceCompany?.id ]" >{{aceCompanyTag.aceCompany?.description}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../ace-company-tag', aceCompanyTag.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ace-company-tag/'+ aceCompanyTag.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'ace-company-tag/'+ aceCompanyTag.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
