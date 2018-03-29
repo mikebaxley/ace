@@ -32,9 +32,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:sqlserver://localhost:1433;database=ace
-        username: SA
-        password: yourStrong(!)Password
+        url: jdbc:sqlserver://cscdvdbsnor483.fsg.amer.csc.com;database=ace
+        username: devsa
+        password: devsa
         hikari:
             data-source-properties:
                 cachePrepStmts: true
