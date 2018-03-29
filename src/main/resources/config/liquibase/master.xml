@@ -5,29 +5,6 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144448_added_entity_Launch.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144449_added_entity_BundleGroup.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144450_added_entity_Bundle.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144451_added_entity_BundleToDocument.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144452_added_entity_DocumentGeneric.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144453_added_entity_DocumentSpecific.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144454_added_entity_TemplateParameters.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144455_added_entity_DocumentState.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144456_added_entity_DocumentType.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144457_added_entity_AceCompany.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144458_added_entity_AceCompanyTag.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144459_added_entity_Printer.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144500_added_entity_WebServiceRequestAudit.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144501_added_entity_PrintManagement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20180329144448_added_entity_constraints_Launch.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144449_added_entity_constraints_BundleGroup.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144451_added_entity_constraints_BundleToDocument.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144452_added_entity_constraints_DocumentGeneric.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144453_added_entity_constraints_DocumentSpecific.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144454_added_entity_constraints_TemplateParameters.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144458_added_entity_constraints_AceCompanyTag.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144459_added_entity_constraints_Printer.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180329144501_added_entity_constraints_PrintManagement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
