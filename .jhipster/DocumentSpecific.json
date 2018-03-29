@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "document",
+            "otherEntityName": "documentGeneric",
+            "otherEntityField": "genericKey"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "documentState",
+            "otherEntityName": "documentState",
+            "otherEntityField": "state",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "documentKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "filePath",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180329161925",
+    "entityTableName": "document_specific",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

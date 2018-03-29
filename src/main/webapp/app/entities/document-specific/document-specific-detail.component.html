@@ -1,0 +1,46 @@
+
+<div *ngIf="documentSpecific">
+    <h2><span>Document Specific</span> {{documentSpecific.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Document Key</span></dt>
+        <dd>
+            <span>{{documentSpecific.documentKey}}</span>
+        </dd>
+        <dt><span>File Name</span></dt>
+        <dd>
+            <span>{{documentSpecific.fileName}}</span>
+        </dd>
+        <dt><span>File Path</span></dt>
+        <dd>
+            <span>{{documentSpecific.filePath}}</span>
+        </dd>
+        <dt><span>Document</span></dt>
+        <dd>
+            <div *ngIf="documentSpecific.document">
+                <a [routerLink]="['/document-generic', documentSpecific.document?.id]">{{documentSpecific.document?.genericKey}}</a>
+            </div>
+        </dd>
+        <dt><span>Document State</span></dt>
+        <dd>
+            <span *ngFor="let documentState of documentSpecific.documentStates; let last = last">
+                <a [routerLink]="['/document-state', documentState?.id ]">{{documentState.state}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'document-specific/'+ documentSpecific.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

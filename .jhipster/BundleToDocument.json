@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "bundle",
+            "otherEntityName": "bundle",
+            "otherEntityField": "bundleName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "document",
+            "otherEntityName": "documentGeneric",
+            "otherEntityField": "genericKey"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "collateSequence",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "optional",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20180329161923",
+    "entityTableName": "bundle_to_document",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

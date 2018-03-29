@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity BundleGroup.
+    -->
+    <changeSet id="20180329161921-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="bundle_groups_id"
+                                 baseTableName="bundle_group_bundle"
+                                 constraintName="fk_bundle_group_bundle_bundle_groups_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bundle_group"/>
+        <addForeignKeyConstraint baseColumnNames="bundles_id"
+                                 baseTableName="bundle_group_bundle"
+                                 constraintName="fk_bundle_group_bundle_bundles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bundle"/>
+        
+    </changeSet>
+</databaseChangeLog>

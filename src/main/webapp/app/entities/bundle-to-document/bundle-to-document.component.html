@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span>Bundle To Documents</span>
+        <button class="btn btn-primary float-right jh-create-entity create-bundle-to-document" [routerLink]="['/', { outlets: { popup: ['bundle-to-document-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Bundle To Document
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="bundleToDocuments">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Collate Sequence</span></th>
+            <th><span>Optional</span></th>
+            <th><span>Bundle</span></th>
+            <th><span>Document</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let bundleToDocument of bundleToDocuments ;trackBy: trackId">
+                <td><a [routerLink]="['../bundle-to-document', bundleToDocument.id ]">{{bundleToDocument.id}}</a></td>
+                <td>{{bundleToDocument.collateSequence}}</td>
+                <td>{{bundleToDocument.optional}}</td>
+                <td>
+                    <div *ngIf="bundleToDocument.bundle">
+                        <a [routerLink]="['../bundle', bundleToDocument.bundle?.id ]" >{{bundleToDocument.bundle?.bundleName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="bundleToDocument.document">
+                        <a [routerLink]="['../document-generic', bundleToDocument.document?.id ]" >{{bundleToDocument.document?.genericKey}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../bundle-to-document', bundleToDocument.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bundle-to-document/'+ bundleToDocument.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'bundle-to-document/'+ bundleToDocument.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

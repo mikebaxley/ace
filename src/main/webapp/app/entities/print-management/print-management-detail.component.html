@@ -1,0 +1,72 @@
+
+<div *ngIf="printManagement">
+    <h2><span>Print Management</span> {{printManagement.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Printer Name</span></dt>
+        <dd>
+            <span>{{printManagement.printerName}}</span>
+        </dd>
+        <dt><span>When Document Created</span></dt>
+        <dd>
+            <span>{{printManagement.whenDocumentCreated | date:'medium'}}</span>
+        </dd>
+        <dt><span>From Server</span></dt>
+        <dd>
+            <span>{{printManagement.fromServer}}</span>
+        </dd>
+        <dt><span>Document File Name</span></dt>
+        <dd>
+            <span>{{printManagement.documentFileName}}</span>
+        </dd>
+        <dt><span>Document Full Path</span></dt>
+        <dd>
+            <span>{{printManagement.documentFullPath}}</span>
+        </dd>
+        <dt><span>Document Status</span></dt>
+        <dd>
+            <span>{{printManagement.documentStatus}}</span>
+        </dd>
+        <dt><span>Try Count</span></dt>
+        <dd>
+            <span>{{printManagement.tryCount}}</span>
+        </dd>
+        <dt><span>When Processed</span></dt>
+        <dd>
+            <span>{{printManagement.whenProcessed | date:'medium'}}</span>
+        </dd>
+        <dt><span>Processing Duration</span></dt>
+        <dd>
+            <span>{{printManagement.processingDuration}}</span>
+        </dd>
+        <dt><span>Processing Info</span></dt>
+        <dd>
+            <span>{{printManagement.processingInfo}}</span>
+        </dd>
+        <dt><span>Extra Field</span></dt>
+        <dd>
+            <span>{{printManagement.extraField}}</span>
+        </dd>
+        <dt><span>From Request</span></dt>
+        <dd>
+            <div *ngIf="printManagement.fromRequest">
+                <a [routerLink]="['/web-service-request-audit', printManagement.fromRequest?.id]">{{printManagement.fromRequest?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'print-management/'+ printManagement.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
