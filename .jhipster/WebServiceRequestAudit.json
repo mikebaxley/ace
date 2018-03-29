@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "printManagement",
+            "otherEntityName": "printManagement",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "fromRequest"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "requestWhen",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "operation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "durationMs",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "exception",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wsRequest",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wsResponse",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "callingApp",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fromServer",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "extraField",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180329144500",
+    "entityTableName": "web_service_request_audit",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

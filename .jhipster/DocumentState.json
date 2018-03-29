@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "document",
+            "otherEntityName": "documentSpecific",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "documentState"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "state",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 2
+        }
+    ],
+    "changelogDate": "20180329144455",
+    "entityTableName": "document_state",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "bundleGroup",
+            "relationshipName": "bundle",
+            "otherEntityName": "bundle",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "bundleGroupName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bundleGroupKey",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180329144449",
+    "entityTableName": "bundle_group",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

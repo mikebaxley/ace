@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "bundleToDocument",
+            "otherEntityName": "bundleToDocument",
+            "otherEntityRelationshipName": "document"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "documentSpecific",
+            "otherEntityName": "documentSpecific",
+            "otherEntityRelationshipName": "document"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "documentType",
+            "otherEntityName": "documentType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "document",
+            "relationshipName": "aceCompany",
+            "otherEntityName": "aceCompany",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "documentKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "matchIssueOrResidentState",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180329144452",
+    "entityTableName": "document_generic",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}
